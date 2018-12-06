@@ -17,10 +17,10 @@ class Node {
   }
 
   set next(n) {
-    if (n instanceof Node) {
+    if ( (n instanceof Node) && (n != this) ){
       this.nxt = n;
     } else {
-      throw new Error('Next must be a Node');
+      throw new Error('Next must be a Node and not the receiver');
     }
   }
 }

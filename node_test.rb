@@ -22,6 +22,12 @@ class NodeTest < MiniTest::Test
     end
   end
 
+  def test_next_must_not_be_self
+    assert_raises(ArgumentError) do
+      @node_2.next = @node_2
+    end
+  end
+
   def test_default_next_is_nil
     assert_nil(@node.next.next)
     assert_nil(@node_2.next)

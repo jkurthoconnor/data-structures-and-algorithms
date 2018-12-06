@@ -7,10 +7,10 @@ class Node
   end
 
   def next=(n)
-    if n.instance_of?(Node)
+    if n.instance_of?(Node) && (n != self)
       @next = n
     else
-      raise(ArgumentError, "Next must be a Node")
+      raise(ArgumentError, "Next must be a Node, and cannot be self")
     end
   end
 
