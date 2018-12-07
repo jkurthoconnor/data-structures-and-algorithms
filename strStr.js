@@ -21,14 +21,19 @@
 //  return -1 if exit outer loop
 //
 
-// result accepted:
+// ACCEPTED SOLUTIONS:
+//
+// const strStr = (haystack, needle) => {
+//  return haystack.indexOf(needle);
+// };
+//
 // const strStr = (haystack, needle) => {
 //   const result = haystack.match(new RegExp(needle));
 //   return (result == null) ? -1 : result.index;
 // };
 
 
-// result accepted, but slower than the regexp version above:
+// result accepted, but slower than both of my solutions above:
 const strStr = (haystack, needle) => {
   if (needle === '' || needle === haystack) return 0;
 
