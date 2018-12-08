@@ -3,33 +3,33 @@
 # in: string
 # out: length of longest substing without duplicate characters
 #       (assumption: whitespace counts as char)
-      
-# naive algorithm: O(N^2) [or N^3, or N^4? all the convenience methods probably run a full iteration each as well
+#
+# original naive algorithm:
+#
+#   - use of `include?` in the if condition and `index` to reset foot surely added
+#   O(N) for each loop, so O(N^2) or O(N^3) time seems appropriate
+#
+# current algorithm: O(N) time
+#   use of a hash to maintain highest index of seen chars allows O(1) time for the access in the if condition and in resetting the foot value
 
-# passes local and leetcode tests (faster than 88%), but its time complexity is too high
 
 def longest_sub(string)
   length = string.size
   return length if length < 2
-  longest = 1
-  current = string[0]
-  foot = 0
-  head = 1
+  foot, head, longest = 0, 1, 1
+  current = { string[0] => 0 }
 
   while head < length do
+    head_seen_prev_at = current[string[head]]
 
-    if current.include?(string[head])
+    if head_seen_prev_at && head_seen_prev_at >= foot
       longest = ((head - foot) > longest) ? (head - foot) : longest
-      foot = string.index(string[head], foot) + 1
+      foot = head_seen_prev_at + 1
     end
 
-    current = string[foot..head]
+    current[string[head]] = head 
     head += 1
   end
 
   ((head - foot) > longest) ? (head - foot) : longest
 end
-
-# to remove the costly include? call, make `current` a hash
-# current = { char: last seen idx of char }
-#   thus if current[char] is >= foot, then we know it is a duplicate with head
