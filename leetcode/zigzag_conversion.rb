@@ -49,30 +49,24 @@ require 'pry'
 #
 
 def convert(str, rows)
+  return str if rows.eql?(1)
+
   matrix = Array.new(rows) { |_| []}
-  down = true;
+  move_down = true
   r, c = 0, 0
 
   str.each_char do |char|
     matrix[r][c] = char
 
-    if down
+    if r.eql?(rows - 1) || (r.eql?(0) && !move_down)
+      move_down = !move_down
+    end
+
+    if move_down
       r += 1
     else
       r -= 1
       c += 1
-    end
-
-    if r.eql?(rows) || r.eql?(-1)
-      down = !down
-
-      if r.eql?(-1) 
-        r = 1
-        c -= 1
-      else
-        r -= 2
-        c += 1
-      end
     end
   end
 
