@@ -1,24 +1,24 @@
 class Node {
-  constructor(v, n=null) {
-    this.val = v;
-    this.nxt = n;
+  constructor(d, n=null) {
+    this._data = d;
+    this._next = n;
   }
 
-  get value() {
-    return this.val;
+  get data() {
+    return this._data;
   }
 
-  set value(v) {
-    this.val = v;
+  set data(v) {
+    this._data = v;
   }
 
   get next() {
-    return this.nxt;
+    return this._next;
   }
 
   set next(n) {
-    if ( (n instanceof Node) && (n != this) ){
-      this.nxt = n;
+    if ( (n === null) || ((n instanceof Node) && (n != this)) ){
+      this._next = n;
     } else {
       throw new Error('Next must be a Node and not the receiver');
     }
