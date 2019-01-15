@@ -78,7 +78,7 @@ class LinkedList {
     if (target !== -1) {
       this.deleteAt(target);
     } else {
-      return this;
+      return -1;
     }
   }
 
@@ -95,7 +95,7 @@ class LinkedList {
 
     return -1;
   }
-
+ 
   printList() {
     let currentNode = this.head.next;
 
@@ -109,41 +109,41 @@ class LinkedList {
 }
 
 
-let firstList = new LinkedList();
-console.log(firstList);
-console.log(firstList.head);
-console.log(firstList.isEmpty());
-firstList.insertAtTail(1);
-firstList.insertAtTail(2);
-console.log('Printing firstList:');
-firstList.printList();
-firstList.deleteAtHead();
-console.log('Printing firstList after deletion at head:');
-firstList.printList();
+// let firstList = new LinkedList();
+// console.log(firstList);
+// console.log(firstList.head);
+// console.log(firstList.isEmpty());
+// firstList.insertAtTail(1);
+// firstList.insertAtTail(2);
+// console.log('Printing firstList:');
+// firstList.printList();
+// firstList.deleteAtHead();
+// console.log('Printing firstList after deletion at head:');
+// firstList.printList();
 
 
-let secondList = new LinkedList();
-secondList.insertAtHead(2);
-secondList.insertAtHead(1);
-secondList.insertAtTail(10);
-secondList.insertAt(3, 11);
-// secondList.insertAt(-2, 11);  // throws error as intended
-// secondList.insertAt(21, 11);  // throws error  as intended
-secondList.insertAt(2, 9);
-secondList.insertAtTail(12);
-console.log('Printing secondList:');
-secondList.printList();
-console.log(secondList.searchFor(9));
-console.log(secondList.searchFor(2));
-console.log(secondList.searchFor(97));
-secondList.deleteAt(3);
-console.log('Printing second list after removing value at idx 3');
-secondList.printList();
-secondList.deleteValue(9);
-console.log('Printing second list after removing value 9');
-secondList.printList();
-secondList.deleteValue(97);
-console.log('Printing second list after attempting to remove non-existant value');
-secondList.printList();
+// let secondList = new LinkedList();
+// secondList.insertAtHead(2);
+// secondList.insertAtHead(1);
+// secondList.insertAtTail(10);
+// secondList.insertAt(3, 11);
+// // secondList.insertAt(-2, 11);  // throws error as intended
+// // secondList.insertAt(21, 11);  // throws error  as intended
+// secondList.insertAt(2, 9);
+// secondList.insertAtTail(12);
+// console.log('Printing secondList:');
+// secondList.printList();
+// console.log(secondList.searchFor(9));
+// console.log(secondList.searchFor(2));
+// console.log(secondList.searchFor(97));
+// secondList.deleteAt(3);
+// console.log('Printing second list after removing value at idx 3');
+// secondList.printList();
+// secondList.deleteValue(9);
+// console.log('Printing second list after removing value 9');
+// secondList.printList();
+// secondList.deleteValue(97);
+// console.log('Printing second list after attempting to remove non-existant value');
+// secondList.printList();
 
 module.exports = LinkedList;
