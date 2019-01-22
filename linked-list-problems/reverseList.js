@@ -1,4 +1,5 @@
 // Write a reverse function that takes a linked list and produces the opposite list
+//
 //  algorithm #1: return new list: 
   //  Space: O(N)
   //  Time: O(N)
@@ -8,15 +9,6 @@
 //   iterate list
 //      create new node from data of iterated node and save as previousCopy
 //      current = current.next
-//
-//   algorithm #2: in-place
-//    Space: O(1)
-//    Time: O(N)
-//
-//   save head
-//   save reference to head.next as connectTo
-//
-//   iterate list while current.next
 //
 //
 //
@@ -41,6 +33,33 @@ const reverse = (list) => {
   return reversedList;
 };
 
+// algorithm #2: in-place
+//    Space: O(1)
+//    Time: O(N)
+//
+// key observations:
+//  - rotated node will always be attached to front of list (i.e. as `head.next`)
+//  - the original `head.next` moves toward the tail with each rotation
+//  - the currently rotating node is always the next node past the original `head.next`
+//  - the original head next is reattached the the tail at `current.next`
+//
+// algorithm:
+//  save head as a constant
+//  save tailAttachment as constant, initialze to `head.next`
+//  save headAttachment as var, initialize to `head.next`
+//  save current as var, initialize to `tailAttachment.next`
+//  save nextNode as var, initialize to `current.next`
+//
+// traverse list
+//  attach current as head.next
+//  current.next = headAttachment
+//  tailAttachment.next = nextNode
+//
+//  headAttachment = head.next
+//  current = nextNode
+//  nextNode = current.next
+//
+//
 const reverseInPlace = (list) => {
   const head = list.head;
   const connectTail = head.next;
