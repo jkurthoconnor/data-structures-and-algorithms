@@ -16,24 +16,17 @@ class LinkedList {
     return this.length === 0;
   }
 
+
   insertAt(n, data) {
     if (n < 0 || n > this.length) {
       throw new Error('Index is outside of list range.');
     }
 
-    let prevNode = this.head;
-    let currentNode = prevNode.next;
+    let [prev, current] = this.findNodeAt(n);
     let node = new Node(data);
-    let idx = 0;
 
-    while (idx < n) {
-      prevNode = currentNode;
-      currentNode = currentNode.next;
-      idx += 1;
-    }
-
-    prevNode.next = node;
-    node.next = currentNode;
+    prev.next = node;
+    node.next = current;
     this.length += 1;
 
     return this;
@@ -52,18 +45,10 @@ class LinkedList {
       throw new Error('Index is outside of allowed range.');
     }
 
-    let prevNode = this.head;
-    let currentNode = this.head.next;
-    let idx = 0;
+    let [ prev, current ] = this.findNodeAt(n);
 
-    while (idx < n) {
-      prevNode = currentNode;
-      currentNode = currentNode.next;
-      idx += 1;
-    }
-
-    prevNode.next = currentNode.next;
-    currentNode.next = null; 
+    prev.next = current.next;
+    current.next = null; 
 
     return this;
   }
@@ -82,6 +67,20 @@ class LinkedList {
     }
   }
 
+  findNodeAt(n) {
+    let prevNode = this.head;
+    let currentNode = this.head.next;
+    let idx = 0;
+
+    while (idx < n) {
+      prevNode = currentNode;
+      currentNode = currentNode.next;
+      idx += 1;
+    }
+
+    return [prevNode, currentNode];
+  }
+
   searchFor(dataValue) {
     let currentNode = this.head.next;
     let idx = 0;
@@ -95,7 +94,7 @@ class LinkedList {
 
     return -1;
   }
- 
+
   printList() {
     let currentNode = this.head.next;
 
