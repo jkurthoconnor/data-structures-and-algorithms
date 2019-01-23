@@ -16,7 +16,6 @@ class LinkedList {
     return this.length === 0;
   }
 
-
   insertAt(n, data) {
     if (n < 0 || n > this.length) {
       throw new Error('Index is outside of list range.');
@@ -49,12 +48,17 @@ class LinkedList {
 
     prev.next = current.next;
     current.next = null; 
+    this.length -= 1;
 
     return this;
   }
 
   deleteAtHead() {
     this.deleteAt(0);
+  }
+
+  deleteAtTail() {
+    this.deleteAt(this.length - 1);
   }
 
   deleteValue(value) {
@@ -112,13 +116,18 @@ class LinkedList {
 // console.log(firstList);
 // console.log(firstList.head);
 // console.log(firstList.isEmpty());
+// console.log(firstList.length);
 // firstList.insertAtTail(1);
 // firstList.insertAtTail(2);
 // console.log('Printing firstList:');
 // firstList.printList();
+// console.log('Printing firstList length:');
+// console.log(firstList.length);
 // firstList.deleteAtHead();
 // console.log('Printing firstList after deletion at head:');
 // firstList.printList();
+// console.log('Printing firstList length:');
+// console.log(firstList.length);
 
 
 // let secondList = new LinkedList();
