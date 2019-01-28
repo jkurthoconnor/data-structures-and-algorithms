@@ -72,27 +72,44 @@ const union = (list1, list2) => {
   return list1;
 };
 
+// using a Set to hold values, then build new list, offloads duplicate checks
+// to the data structure
+const unionWithSet = (list1, list2) => {
+  const uniqueVals = new Set();
+
+  const extractVals = (list) => {
+    let current = list.head.next;
+
+    while (current !== null) {
+      uniqueVals.add(current.data);
+      current = current.next
+    }
+  };
+
+    extractVals(list1);
+    extractVals(list2);
+
+  return buildList([...uniqueVals]);
+};
+
+
 // TESTS
 const assert = require('assert').strict;
 
+// setup data
 const list1 = buildList([10,20,80,60]);
 const list2 = buildList([15,20,30,60,45]);
-
 const list3 = buildList([7,14,21,14,22,7]);
 const list4 = buildList([1,2,2,2,3,4,4,5,6]);
-
 const list5 = buildList([1,2,3]);
 const list6 = buildList([1]);
-
 const list7 = buildList([]);
 const list8 = buildList([10]);
-
 const list9 = buildList([]);
 const list10 = buildList([]);
 
-// test does not assume value/node order is significant
+// assertion function; test does not assume value/node order is significant
 const compareListValues = (list, expectedValues) => {
-  // extract values from input list
   let actualValues = [];
   let current = list.head.next;
 
@@ -113,8 +130,17 @@ const compareListValues = (list, expectedValues) => {
 };
 
 
+// run tests
+// NB: unionWithSet tests must be run first; union mutates input
+compareListValues(unionWithSet(list1, list2), [10,20,80,60,15,30,45]);
+compareListValues(unionWithSet(list3, list4), [1,2,3,4,5,6,7,14,21,22]);
+compareListValues(unionWithSet(list5, list6), [1,2,3]);
+compareListValues(unionWithSet(list7, list8), [10]);
+compareListValues(unionWithSet(list9, list10), []);
+
 compareListValues(union(list1, list2), [10,20,80,60,15,30,45]);
 compareListValues(union(list3, list4), [1,2,3,4,5,6,7,14,21,22]);
 compareListValues(union(list5, list6), [1,2,3]);
 compareListValues(union(list7, list8), [10]);
 compareListValues(union(list9, list10), []);
+
