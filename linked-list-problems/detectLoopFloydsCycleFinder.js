@@ -26,7 +26,7 @@
 const Node = require('./Node.js');
 const ListTools = require('./BuildList.js');
 const listTool = new ListTools();
-const buildList =  listTool.buildList;
+const buildList = listTool.buildList;
 
 const detectLoop = list => {
   let slowRunner = list.head;

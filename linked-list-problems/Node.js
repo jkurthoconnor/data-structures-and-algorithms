@@ -17,7 +17,7 @@ class Node {
   }
 
   set next(n) {
-    if ( (n === null) || ((n instanceof Node) && (n != this)) ){
+    if ( (n === null) || ((n instanceof Node) && (n != this)) ) {
       this._next = n;
     } else {
       throw new Error('Next must be a Node and not the receiver');
