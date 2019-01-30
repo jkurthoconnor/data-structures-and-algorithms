@@ -42,7 +42,7 @@ const findNth = (list, n) => {
     current = current.next;
   }
 
-  return nodePlaces.get(currentPlace - (n - 1)) || -1;
+  return nodePlaces.get((currentPlace + 1) - n) || -1;
 };
 
 
