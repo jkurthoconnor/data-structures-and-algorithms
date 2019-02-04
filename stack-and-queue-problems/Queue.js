@@ -1,18 +1,34 @@
 class Queue {
   constructor() {
-    this.queue = new Array();
+    this.elements = new Array();
+  }
+
+  get size() {
+    return this.elements.length;
+  }
+
+  isEmpty() {
+    return this.size === 0;
   }
 
   enqueue(ele) {
-    this.queue.push(ele);
+    this.elements.push(ele);
   }
 
   dequeue() {
-    return this.queue.shift();
+    if (this.isEmpty()) {
+      return null;
+    } else {
+    return this.elements.shift();
+    }
   }
 
   peek() {
-    return this.queue[0];
+    if (this.isEmpty()) {
+      return null;
+    } else {
+    return this.elements[0];
+    }
   }
 }
 
