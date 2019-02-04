@@ -16,10 +16,10 @@ class Stack {
   }
 
   pop() {
-    if (!this.isEmpty()) {
-      return this.stack.pop();
-    } else {
+    if (this.isEmpty()) {
       return null;
+    } else {
+      return this.stack.pop();
     }
   }
 
