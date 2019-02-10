@@ -81,7 +81,7 @@ const reverseKinPlace = (q, k) => {
   if (q.size < k || k < 1) return null;
 
   const reverseStack = new Stack();
-  const unreversedCount = q.size - k;
+  const finalRotations = q.size - k;
 
   for (let i = 1; i <= k; i++) {
     reverseStack.push(q.dequeue());
@@ -91,7 +91,7 @@ const reverseKinPlace = (q, k) => {
     q.enqueue(reverseStack.pop());
   }
 
-  for (let i = 1; i <= unreversedCount; i++) {
+  for (let i = 1; i <= finalRotations; i++) {
     q.enqueue(q.dequeue());
   }
 
