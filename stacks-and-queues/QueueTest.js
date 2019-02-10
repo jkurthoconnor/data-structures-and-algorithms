@@ -1,5 +1,6 @@
 const assert = require('assert').strict;
-const Queue = require('./Queue.js');
+// const Queue = require('./Queue.js');
+const Queue = require('./QueueFromTwoStacks');
 
 let queue1 = new Queue();
 
