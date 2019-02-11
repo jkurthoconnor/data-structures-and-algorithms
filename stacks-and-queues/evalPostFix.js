@@ -11,7 +11,9 @@
 //   Test Cases:
 //     (see below)
 //
-//    '921*-8-4+'
+//  Algorithm #1  passed tests, but too complex tracking prevChar, left and right
+//
+//  '921*-8-4+'
 //   pC:
 //   s: 
 //   o: 
@@ -30,6 +32,20 @@
 // i        else save new as right
 //      compute & save value of left operator right as left (cast left and right as integers
 //    return left
+//
+// Algorithm #2: (implemented below)
+//
+// guard clauses for illegitimate expressions
+// init empty stack
+//
+// iterate string/expression
+//    push digit chars (as Numbers) onto stack
+//    if char is operator
+//      pop two off stack:
+//        first is right; second is left
+//        push evaluation of (left operator right) onto stack
+//
+//    return stack(pop)
 
 const Stack = require('./Stack.js');
 
@@ -37,47 +53,33 @@ const evalPostFix = expression => {
   if (expression.match(/[^0-9+\-*\/]/)) return null;
   if (!expression.match(/^[0-9]{2}/)) return null;
 
-  let [leftVal, rightVal, operator, prevChr] = [,,,];
   let digits = new Stack();
 
   for (let chr of expression) {
     if (chr.match(/[0-9]/)) {
-      prevChr = true;
-      digits.push(chr);
-      continue;
-    }
-
-    operator = chr;
-    prevChr = !prevChr;
-
-    if (leftVal === undefined) {
-        rightVal = digits.pop();
-        leftVal = digits.pop();
+      digits.push(Number(chr));
     } else {
-      if (prevChr) {
-        rightVal = leftVal;
-        leftVal = digits.pop();
-      } else {
-        rightVal = digits.pop();
-      }
-    }
+      let operator = chr;
+      let rightVal = digits.pop();
+      let leftVal = digits.pop();
 
-    leftVal = evalInFix(leftVal, operator, rightVal);
+      digits.push(evalInFix(leftVal, operator, rightVal));
+    }
   }
 
-  return leftVal;
+  return digits.pop();
 };
 
 const evalInFix = (valLeft, op, valRight) => {
   switch (op) {
     case '+':
-      return Number(valLeft) + Number(valRight);
+      return valLeft + valRight;
     case '-':
-      return Number(valLeft) - Number(valRight);
+      return valLeft - valRight;
     case '*':
-      return Number(valLeft) * Number(valRight);
+      return valLeft * valRight;
     case '/':
-      return Number(valLeft) / Number(valRight);
+      return valLeft / valRight;
   }
 };
 
