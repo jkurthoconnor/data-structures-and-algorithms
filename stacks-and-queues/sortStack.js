@@ -38,19 +38,19 @@
 //
 //  Data Structure: stack
 //  Algorithm: visualize as two stacks loading/unloading/pushing value
-//            until the original stack is empty & thus holder is sorted 
-//            in descending order (top is highest, bottom is lowest)
+//            onto a temp stack until the original stack is empty & thus 
+//            holder is sorted in descending order (top is highest, bottom is lowest)
 //            and then reload original stack by push/pop from holder
 //
 //    init empty holder stack
-//    init tmp
+//    init tmp to hold single value
 //
 //  while stack is not empty
 //    set tmp to stack.pop
 //    if tmp >= holder.peek
 //      holder.push(tmp)
 //    else
-//      until holder is empty
+//      until holder is empty or tmp >= holder.peek
 //        stack.push(holder.pop)
 //    holder.push(tmp)
 //
@@ -89,10 +89,10 @@ const sortStack = stack => {
   while (!stack.isEmpty()) {
     tmp = stack.pop();
 
-    if (tmp >= holder.peek()) {
+    if (holder.isEmpty() || tmp >= holder.peek()) {
       holder.push(tmp)
     } else {
-      while (!holder.isEmpty()) {
+      while (holder.peek() !== null && tmp < holder.peek() ) {
         stack.push(holder.pop());
       }
       holder.push(tmp);
@@ -135,6 +135,7 @@ const stack3 = makeStackFrom([2,4,12,23,42,60,97]);
 const stack4 = makeStackFrom([10,9,8,7,6]);
 const stack5 = makeStackFrom([7,4,7,4,9]);
 const stack6 = makeStackFrom([]);
+const stack7 = makeStackFrom([7,-14,7,4,9]);
 
 process.stdout.write('Running Tests ...');
 
@@ -145,6 +146,7 @@ compareArrayWStack([2,4,12,23,42,60,97], sortStack(stack3));
 compareArrayWStack([6,7,8,9,10], sortStack(stack4));
 compareArrayWStack([4,4,7,7,9], sortStack(stack5));
 assert.equal(stack6, stack6);
+compareArrayWStack([-14,4,7,7,9], sortStack(stack7));
 
 process.stdout.write('...Tests Green');
 
