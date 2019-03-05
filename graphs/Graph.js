@@ -9,11 +9,26 @@ class Graph {
       this.adjacencyList.push(new List());
     }
   }
+
+  addEdge(sourceIdx, destinationIdx) {
+    this.adjacencyList[ sourceIdx ].insertAtTail(destinationIdx);
+  }
+
+  printGraph() {
+    // TODO: refactor to traverse root vertex list
+    this.adjacencyList.forEach((list, idx) => {
+      process.stdout.write(`${idx} -> `);
+      list.printList();
+    });
+  }
 }
 
 
-const testGraph = new Graph(3);
-console.log(testGraph);
+const testGraph = new Graph(4);
+testGraph.addEdge(0, 1);
+testGraph.addEdge(0, 2);
+testGraph.addEdge(1, 3);
+testGraph.addEdge(2, 3);
 
-
+testGraph.printGraph();
 
