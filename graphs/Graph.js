@@ -1,7 +1,19 @@
 List = require('../linked-lists/LinkedList'); 
 
-const testList = new List();
+class Graph {
+  constructor(v) {
+    this.adjacencyList = [];
+    this.vertices = v;
 
-console.log(testList);
+    for (let i = 0; i < v; i++) {
+      this.adjacencyList.push(new List());
+    }
+  }
+}
+
+
+const testGraph = new Graph(3);
+console.log(testGraph);
+
 
 
