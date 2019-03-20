@@ -15,7 +15,7 @@ class Graph {
   }
 
   printGraph() {
-    // TODO: refactor to traverse root vertex list
+    // TODO: implement directly w/o LinkedList.prototype.printList()
     this.adjacencyList.forEach((list, idx) => {
       process.stdout.write(`${idx} -> `);
       list.printList();
