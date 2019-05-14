@@ -86,7 +86,6 @@ def roman_to_int(roman)
   value
 end
 
-
 # Algo 2: O(N) with buffer (see BUG)
 
 =begin
