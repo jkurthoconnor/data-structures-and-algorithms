@@ -40,13 +40,17 @@
 #Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 ##
 #
-# model: 1) mark F as go
-#        2) go-right(start, stop)
-#           go-down(start, stop)
-#           go-left(start, stop)
-#           go-up(start, stop)
+# model: 
+#         Loop while matrix has members
+#           1) move top row into spiral
+#           2) rotate matrix 90deg left
+#         flatten / return spiral
+#
 #
 
+# faster than 99.10% Ruby submissions; memory use less than 100% of submissions
+
+# Time: O(n * m)
 def spiral_matrix(matrix)
   return [] if matrix.empty?
   spiral = []
