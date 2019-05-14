@@ -1,8 +1,6 @@
 # LeetCode 28. Implement strStr()
 #
-# Implement strStr().
-
-# Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+# Problem: Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
 
 # I: 'haystack' string; 'needle' string
 # O: index of start of pattern match;
@@ -14,13 +12,6 @@
     # For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().  #
 #
 # Examples (see tests below)
-
-
-#
-# Data Struct: 
-#   `match_start` var to hold start of potential match string; init to -1
-#   `compare_idx` var to iterate in seeking match; init to 0
-#   `should_compare` var to hold boolean; init to false
 #
 #
 #
@@ -28,9 +19,8 @@
 # Algo 1:   Brute Force / Intuitive: O(stack.size * needle.size): nested loop
 # Time Limit Exceeded on Leetcode test 74 of 74
 
-=begin
 def strStr(stack, needle)
-  return 0 if (needle.empty? || needle == stack)
+  return 0 if needle.empty?
   return -1 if stack.size < needle.size
 
   stack.each_char.with_index do |ch, i|
@@ -44,8 +34,13 @@ def strStr(stack, needle)
 
   return -1
 end
-=end
 
+# Model #2
+# Data Struct: 
+#   `match_start` var to hold start of potential match string; init to -1
+#   `compare_idx` var to iterate in seeking match; init to 0
+#   `should_compare` var to hold boolean; init to false
+#
 # Algo 2: O(N)
 #   init vars as above
 #   iterate through stack chars
@@ -59,7 +54,7 @@ end
 #    if should_compare increment compare_idx        
 #    if should_compare && compare_idx.size >  needle.length return match_start
 
-
+=begin
 def strStr(stack, needle)
   return 0 if needle.empty?
   return -1 if stack.size < needle.size
@@ -92,6 +87,7 @@ def strStr(stack, needle)
 
   return -1
 end
+=end
 
 p strStr("hello", "ll") # 2
 p strStr("hello", "hellooooo") # -1
