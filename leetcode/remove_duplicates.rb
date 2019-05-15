@@ -20,23 +20,24 @@
 # end
 
 # TIME: O(N) SPACE: O(1)
+# faster than 89.49%; less memory than 98.69%
 def remove_duplicates(nums)
-  anchor = 0
-  new_finder = 0
+  prev_write = 0
+  new_uniq = 0
 
-  while new_finder < nums.length
-    while nums[anchor] == nums[new_finder]
-      new_finder += 1
+  while new_uniq < nums.length
+    while nums[prev_write] == nums[new_uniq]
+      new_uniq += 1
     end
 
-    if nums[new_finder] && (anchor + 1 != new_finder) # prevent overrun and write to self
-      nums[anchor + 1] = nums[new_finder]
+    if nums[new_uniq] && (prev_write.next != new_uniq) # prevent overrun & write to self
+      nums[prev_write.next] = nums[new_uniq]
     end
 
-    anchor += 1
+    prev_write += 1
   end
 
-  return anchor
+  return prev_write
 end
 
 p remove_duplicates([2]) # 1
