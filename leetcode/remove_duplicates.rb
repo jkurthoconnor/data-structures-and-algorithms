@@ -29,7 +29,7 @@ def remove_duplicates(nums)
       new_finder += 1
     end
 
-    if nums[new_finder]
+    if nums[new_finder] && (anchor + 1 != new_finder) # prevent overrun and write to self
       nums[anchor + 1] = nums[new_finder]
     end
 
