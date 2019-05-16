@@ -25,11 +25,12 @@
 
 
 
-# TIME: O(N) SPACE: O(1)
+# TIME: O(log N) SPACE: O(1)
 # LeetCode: faster than 98%; less memory than 100%
 def is_perfect_square(n)
+  return true if n == 1
   low = 0
-  high = n
+  high = n / 2
 
   while low <= high
     mid = low + (high - low) / 2
@@ -55,3 +56,5 @@ p is_perfect_square(901) # F
 p is_perfect_square(900) # T
 p is_perfect_square(10001) # F
 p is_perfect_square(10000) # T
+p is_perfect_square(10004) # F
+
