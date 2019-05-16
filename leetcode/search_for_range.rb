@@ -7,9 +7,9 @@
 # OUT: success: array of start and end idx for range of target value
 #      failure: [-1, -1]
 #
-#  MODEL: binary search with added conditions
+#  MODEL: binary search with modified success conditions: 
 #         
-#  ALGO:
+#  ALGO LOGIC:
 #   binary search for target.
 #     if found
   #     if found and target (mid) idx - 1 also holds value, reset search to the left
@@ -26,7 +26,7 @@
 #     * 1 to find high terminus
 #   have function call each application of binary search
 
-# TIME: O(N)
+# TIME: O(log N)
 def find_low_terminus(nums, target)
   low = 0
   high = nums.length - 1
@@ -42,23 +42,19 @@ def find_low_terminus(nums, target)
         high = mid
       end
 
-      next
+      next                    # once target is located, seach only in one direction
     end
 
-    if nums[mid] > target
+    if nums[mid] > target     # << is only run prior to first id of target
       high = mid
     else
       low = mid
     end
   end
 
-  if nums[low] == target
-    return low
-  elsif nums[high] == target
-    return high
-  else
-    return -1
-  end
+  return low if nums[low] == target  # order of return statements is significant
+  return high if nums[high] == target
+  return -1
 end
 
 def find_high_terminus(nums, target)
@@ -86,13 +82,9 @@ def find_high_terminus(nums, target)
     end
   end
 
-  if nums[high] == target
-    return high
-  elsif nums[low] == target
-    return low
-  else
-    return -1
-  end
+  return high if nums[high] == target
+  return low if nums[low] == target
+  return -1
 end
 
 

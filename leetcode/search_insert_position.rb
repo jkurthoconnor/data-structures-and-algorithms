@@ -11,12 +11,14 @@
 
 # DATA STRUCT: n/a
 #
-# ALGO:
-#   MODEL: binary search 
-#           - adapt return conditions to return idx on failure to find
-#
+# MODEL: binary search plus adapted conditions
+#       - run binary search per usual
+#       - return value conditions adapted:
+  #       - on success, return idx as typical
+  #       - on failure, return idx of sorted location
+    #       - idx will be (or be adjacent to) the `low` or `high` idx
 
-# TIME: O(N) SPACE: O(1)
+# TIME: O(log N) SPACE: O(1)
 # LeetCode: faster than 100%; less memory than 100%
 def search_insert(nums, target)
   low = 0
@@ -45,8 +47,6 @@ def search_insert(nums, target)
     return 0
   end
 end
-
-
 
 p search_insert([1,3,5,6], 3) # 1
 p search_insert([1,3,5,6], 5) # 2
