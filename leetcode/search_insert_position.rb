@@ -46,7 +46,8 @@ def search_insert(nums, target)
   end
 end
 
-#
+
+
 p search_insert([1,3,5,6], 3) # 1
 p search_insert([1,3,5,6], 5) # 2
 p search_insert([1,3,5,6,7], 5) # 2

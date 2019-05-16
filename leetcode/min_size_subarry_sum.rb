@@ -18,7 +18,6 @@
 #             - runner advances or remains in place
 #             - anchor is 'pulled forward' on condition
 
-
 # TIME: O(N) SPACE: O(1)
 # runtime faster than 48.39%; memory usage less than 100%
 def min_sub_array_len(target, nums)

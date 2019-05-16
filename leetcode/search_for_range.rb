@@ -19,7 +19,8 @@
 #
 #   if target not found, return [-1, -1]
 #
-#  modified algo:
+#  MODIFIED ALGO:
+#
 #   break up above logic into two uses of binary search
 #     * 1 to find low terminus
 #     * 1 to find high terminus

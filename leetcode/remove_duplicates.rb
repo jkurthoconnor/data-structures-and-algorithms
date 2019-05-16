@@ -9,16 +9,15 @@
 
 
 # ALGO:
-# i & j = 0
-
-# while j < nums.length
-#   while j value == i value, 
-#       increment j
-
-#   write j value to i+1
-#   increment i
-# end
-
+# MODEL: anchor with unidirectional fast value-seeking runner
+#         - find 1st instance of new/unique value
+#         - overwrite value at next available slot with new/unique value
+#         - *** don't care about actual removal: only care to ensure 
+#           series of unique values compressed to front; any values remaining 
+#           at end are irrelevant ***
+#         - *** think of 'pulling' desired values forward, _not_ pushing unwanted
+#           values to the back
+#
 # TIME: O(N) SPACE: O(1)
 # faster than 89.49%; less memory than 98.69%
 def remove_duplicates(nums)
