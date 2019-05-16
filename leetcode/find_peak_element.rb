@@ -1,4 +1,3 @@
-require 'pry'
 # LeetCode 162. Find Peak Element
 #
 # PROBLEM:
@@ -19,7 +18,7 @@ require 'pry'
           # if at a peak, return idx
           # if on a slope (i.e. !peak, since no adjacent indices have same values)
           #   move 'uphill'
-        #       (when in a valley, either uphill side will do)
+          #       (when in a valley, either uphill side will do)
 
 #
 #         Peak:  value at idx -1 < value at idx > value at idx +1
