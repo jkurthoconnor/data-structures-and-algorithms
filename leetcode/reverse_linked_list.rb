@@ -45,24 +45,6 @@ p reverse_list(list)
 =begin
 
 # pseudo code model
-def reverse(h)
-  dummy = new node
-  dummy.next = head
-  prev = dummy
-  current = head
-  nxt = head.next
-
-  while current
-    curr.next = prev
-    prev = curr
-    curr = nxt
-    nxt = nxt.next
-  end
-
-  prev
-end
-
-# pseudo code model
 # dummy head is head of new list
 
 def merge(h1, h2)
