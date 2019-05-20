@@ -39,24 +39,3 @@ single_list = f
 
 p reverse_list(list)
 # p reverse_list(single_list)
-
-
-
-=begin
-
-# pseudo code model
-# dummy head is head of new list
-
-def merge(h1, h2)
-  while h1 && h2
-    # traverse both lists
-    # attach the lower of the current nodes to dummy.current.next
-    #
-  end
-
-  # check: which list has ended?
-  #         attach the other current to dummy.current.next
-
-  dummy.next
-end
-=end
