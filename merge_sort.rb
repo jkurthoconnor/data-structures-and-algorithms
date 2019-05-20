@@ -11,11 +11,10 @@
 
 def mergesort(arr)
   return arr if arr.length == 1
-  
-  left_end = (arr.length / 2) - 1
-  right_end = arr.length / 2
-  left = arr[0..left_end]
-  right = arr[right_end..arr.length - 1]
+
+  mid = (arr.length / 2) - 1
+  left = arr[0..mid]
+  right = arr[mid + 1..arr.length - 1]
 
   left = mergesort(left)
   right = mergesort(right)
@@ -48,3 +47,4 @@ def merge(arr1, arr2)
 end
 
 p mergesort([1,9,43,2,12])
+p mergesort([19,12,32,100,23,32])
