@@ -38,25 +38,18 @@ p max_subarray_sum(a, 0, a.length - 1)
 p max_subarray_sum(b, 0, b.length - 1)
 p max_subarray_sum(c, 0, c.length - 1)
 
-# without the `crossing` method, the function returns the max sized element
 
-# CALL 1:
-# mid = 2
-  #   CALL 2 LEFT SIDE:
-#       f([2,3,4,5,7], 0, 2)
-#           mid =  1
-  #         CALL 3:
-#           f([2,3,4,5,7], 0, 1)
-#           f([2,3,4,5,7], 2, 4)
-#                 mid = 0
-  #               CALL 4:
-      #           f([2,3,4,5,7], 0, 0)  # return 2
-      #           f([2,3,4,5,7], 1, 4)
-#                 
-#           f([2,3,4,5,7], 2, 4)
+#                                           mss([2,3,4], 0, 2)   =>9
+
+
+#                 mss([2,3,4],0,1)           mss([2,3,4], 2,2)        mcs([2,3,4], 0,1,2)
+#                      * *    =>5                   *    =>4               * * *  =>9
+
+#
+# mss([2,3,4],0,0)     mss([2,3,4],1,1)   mcs([2,3,4],0,0,1)
+#      *      =>2             *   =>3          * *    =>5
 #
 #
-#       CALL 2 RIGHT SIDE:
-  #       f([2,3,4,5,7], 3, 4)
-
-
+#
+# BRANCHING DOWN UNTIL BASE CASE
+# RETURNS FLOW UP FROM LEAF NODES
