@@ -73,8 +73,8 @@ def min_finder(grid, row, col, memo = {})
     return column_sum(grid, row)
   end
 
-  min_up   = min_finder(grid, row - 1, col, memo) || memo[[row - 1, col]]
-  min_left = min_finder(grid, row, col - 1, memo) || memo[[row, col - 1]]
+  min_up   = memo[[row - 1, col]] || min_finder(grid, row - 1, col, memo)
+  min_left = memo[[row, col - 1]] || min_finder(grid, row, col - 1, memo)
 
   min_path = (min_up < min_left) ? min_up : min_left
   min      = min_path + grid[row][col]
