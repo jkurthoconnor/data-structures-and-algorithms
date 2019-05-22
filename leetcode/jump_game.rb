@@ -33,23 +33,28 @@ RULES
 
   RECURSIVE STRUCTURE:
     - a target element (T) is accessible from the array start  by an element (E) 
-      if the value of E is >= idxT - idxE && E is itself accessible from the array
+      if the value of E is >= idxT - idxE  __&& E is itself accessible__ from the array
       start
 
 =end
 
+# LeetCode time limit exceeded
 def can_jump(nums)
   accessible?(nums, nums.length - 1)
 end
 
 def accessible?(nums, to_idx, memo = {})
   return true if to_idx == 0 
-
   idx = 0
+
   while idx < to_idx
     jumps_needed = to_idx - idx
 
-    if nums[idx] >= jumps_needed && accessible?(nums, idx) 
+    if memo[idx].nil?
+      memo[idx] = accessible?(nums, idx)
+    end
+
+    if nums[idx] >= jumps_needed && memo[idx]
       return true 
     end
 
@@ -59,9 +64,12 @@ def accessible?(nums, to_idx, memo = {})
   false
 end
 
+p can_jump([1])                         # true
+p can_jump([1,2])                       # true
 p can_jump([2,3,1,1,4])                 # true
 p can_jump([8,0,0,0,0,0,0,0,4])         # true
-p can_jump([1])                         # true
+
 p can_jump([7,0,0,0,0,0,0,0,4])         # false
+p can_jump([2,0,1,0,9])                 # false
 p can_jump([3,2,1,0,4])                 # false
 p can_jump([1,0,14,3,2])                # false
