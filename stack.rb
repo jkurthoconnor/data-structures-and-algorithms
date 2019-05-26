@@ -17,4 +17,9 @@ class Stack
   def peek
     @stack.last
   end
+
+  def size
+    @stack.size
+  end
 end
+
