@@ -14,8 +14,23 @@ class Queue
     @queue.shift
   end
 
+  def size
+    @queue.size
+  end
+
   def peek
     @queue.first
   end
 end
 
+=begin
+q = Queue.new
+q.enqueue("hello world")
+p q.size
+p q.peek
+q.enqueue("next string")
+p q.size
+p q.dequeue
+p q.dequeue
+p q.size
+=end
