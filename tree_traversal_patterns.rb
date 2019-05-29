@@ -7,7 +7,7 @@ def traverse_inorder(root)
   return nil if root.nil?
 
   traverse_inorder(root.left)
-  p root.value
+  p root.val
   traverse_inorder(root.right)
 end
 
@@ -16,7 +16,7 @@ end
 def traverse_preorder(root)
   return nil if root.nil?
 
-  p root.value
+  p root.val
   traverse_preorder(root.left)
   traverse_preorder(root.right)
 end
@@ -27,7 +27,7 @@ def traverse_postorder(root)
   
   traverse_postorder(root.left)
   traverse_postorder(root.right)
-  p root.value
+  p root.val
 end
 
 # LEVEL ORDER TRAVERSAL
@@ -45,7 +45,7 @@ def print_level(root, level)
   return nil if root.nil?
 
   if level == 1
-    p root.value
+    p root.val
   elsif level > 1
     print_level(root.left, level - 1)
     print_level(root.right, level - 1)
@@ -66,29 +66,29 @@ def height(root)
 end
 
 
-Node = Struct.new(:value, :left, :right)
+# Node = Struct.new(:val, :left, :right)
 
-one = Node.new(1)
-two = Node.new(2)
-three = Node.new(3)
-four = Node.new(4)
-five = Node.new(5)
+# one = Node.new(1)
+# two = Node.new(2)
+# three = Node.new(3)
+# four = Node.new(4)
+# five = Node.new(5)
 
-=begin
+# =begin
 
-BST         4
-         2    5
-      1    3
+# BST         4
+#          2    5
+#       1    3
 
-=end
-four.left = two
-four.right = five
-two.left = one
-two.right = three
-bst = four
+# =end
+# four.left = two
+# four.right = five
+# two.left = one
+# two.right = three
+# bst = four
 
-# traverse_inorder(bst) # 1,2,3,4,5
-# traverse_preorder(bst) #  4,2,1,3,5
-# traverse_postorder(bst)  # 1,3,2,5,4
+# # traverse_inorder(bst) # 1,2,3,4,5
+# # traverse_preorder(bst) #  4,2,1,3,5
+# # traverse_postorder(bst)  # 1,3,2,5,4
 
-traverse_breadth_first(bst)  # 4,2,5,1,3
+# traverse_breadth_first(bst)  # 4,2,5,1,3
