@@ -32,7 +32,7 @@ end
 
 # LEVEL ORDER TRAVERSAL
 
-# breadth first
+# breadth first recursive
 def traverse_breadth_first(root)
   height = height(root)
 
@@ -65,30 +65,52 @@ def height(root)
   end
 end
 
+# breadth first with queue
+#
+def breadth_first_with_queue(root)
+  levels = []
+  queue = [root]
 
-# Node = Struct.new(:val, :left, :right)
+  while !queue.empty?
+    level_size = queue.size
+    level = []
 
-# one = Node.new(1)
-# two = Node.new(2)
-# three = Node.new(3)
-# four = Node.new(4)
-# five = Node.new(5)
+    level_size.times do
+      current = queue.shift
+      level.push(current.val)
+      queue.push(current.left) if current.left
+      queue.push(current.right) if current.right
+    end
 
-# =begin
+    levels.push(level)
+  end
+
+  levels
+end
+
+
+Node = Struct.new(:val, :left, :right)
+
+one = Node.new(1)
+two = Node.new(2)
+three = Node.new(3)
+four = Node.new(4)
+five = Node.new(5)
+
 
 # BST         4
-#          2    5
-#       1    3
+#           2    5
+#        1    3
 
-# =end
-# four.left = two
-# four.right = five
-# two.left = one
-# two.right = three
-# bst = four
+four.left = two
+four.right = five
+two.left = one
+two.right = three
+bst = four
 
 # # traverse_inorder(bst) # 1,2,3,4,5
 # # traverse_preorder(bst) #  4,2,1,3,5
 # # traverse_postorder(bst)  # 1,3,2,5,4
 
-# traverse_breadth_first(bst)  # 4,2,5,1,3
+# p traverse_breadth_first(bst)  # 4,2,5,1,3
+p breadth_first_with_queue(bst)
