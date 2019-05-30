@@ -34,7 +34,7 @@ def tree_levels(root)
 
       if current.class == Node
         level.push(current.val)
-        (current.left && queue.push(current.left)) || queue.push(nil)
+        (current.left && queue.push(current.left))   || queue.push(nil)
         (current.right && queue.push(current.right)) || queue.push(nil)
       else
         level.push(current)
