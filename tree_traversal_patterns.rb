@@ -1,6 +1,5 @@
 
-# DEPTH FIRST TRAVERSAL
-
+# DEPTH-FIRST RECURSIVE PATTERNS
 # inorder traversal of a BST visits nodes in non-descending order
 # for non-ascending order, reverse left and right traversals
 def traverse_inorder(root)
@@ -30,7 +29,31 @@ def traverse_postorder(root)
   p root.val
 end
 
-# LEVEL ORDER TRAVERSAL
+# DEPTH-FIRST ITERATIVE PATTERNS
+
+# preorder with return of values 
+def preorder_traversal(root)
+  return [] if root.nil?
+
+  values = []
+  stack = ["padding"]
+  current = root
+
+  while !stack.empty?
+    values << current.val
+    stack << current.right if current.right
+    if current.left
+      current = current.left
+    else
+      current = stack.pop
+    end
+  end
+
+  values
+end
+
+
+# BREADTH-FIRST / LEVEL ORDER TRAVERSAL RECURSIVE PATTERN
 
 # breadth first recursive
 def traverse_breadth_first(root)
@@ -65,9 +88,25 @@ def height(root)
   end
 end
 
-# breadth first with queue
-#
+# BREADTH-FIRST ITERATIVE PATTERNS
+
+# simple traversal
 def breadth_first_with_queue(root)
+  result = []
+  queue = [root]
+
+  while !queue.empty?
+    current = queue.shift
+    result.push(current.val)
+    queue.push(current.left) if current.left
+    queue.push(current.right) if current.right
+  end
+
+  result
+end
+
+# traversal with map of each level in sub-array
+def breadth_first_level_mapping_with_queue(root)
   levels = []
   queue = [root]
 
@@ -113,4 +152,5 @@ bst = four
 # # traverse_postorder(bst)  # 1,3,2,5,4
 
 # p traverse_breadth_first(bst)  # 4,2,5,1,3
+# p breadth_first_level_mapping_with_queue(bst)
 p breadth_first_with_queue(bst)
