@@ -49,6 +49,13 @@ loop while queue
 =end
 
 # LeetCode: faster than 100%; less memory than 100%
+# TIME:  ; SPACE:
+
+
+
+
+
+
 def flatten(root)
   return [] if root.nil?
   assemble_list(load_queue(root))

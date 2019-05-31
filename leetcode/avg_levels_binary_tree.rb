@@ -26,7 +26,8 @@ ALGO:
 =end
 
 
-# LeetCode: faster than 97%; less memory than 100%
+
+
 
 # LeetCode: faster than 95%; less memory than 100%
 def average_of_levels(root)
