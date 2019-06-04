@@ -49,7 +49,7 @@ def combination_sum2(nums, target)
 end
 
 def helper(nums, target, result, tmp=[], idx=0, sum=0)
-  # puts "f(#{nums}, #{target}, result=#{result}, tmp=#{tmp}, sum=#{sum})"
+  puts "#{'  ' * tmp.size} f(#{nums}, #{target}, result=#{result}, tmp=#{tmp} idx=#{idx}, sum=#{sum})"
 
   if sum > target
     return
