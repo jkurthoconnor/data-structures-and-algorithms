@@ -62,18 +62,18 @@ def helper(max, size, result, tmp = [])
 end
 
 # advances number on recursive to prevent _consideration_ of duplicates
-# LeetCode: faster than 54%; less memory than 40%
+# LeetCode: faster than 58%; less memory than 46%
 def helper1(max, size, result, tmp = [], start = 1)
 
-  (start..max).each do |n|
-    tmp.push(n)
+  if tmp.size == size
+    result.push(tmp.clone)
+  else
+    (start..max).each do |n|
+      tmp.push(n)
 
-    if tmp.size == size
-      result.push(tmp.clone)
+      helper1(max, size, result, tmp, n + 1)
+      tmp.pop
     end
-
-    helper1(max, size, result, tmp, n + 1)
-    tmp.pop
   end
 end
 
