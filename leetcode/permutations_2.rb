@@ -31,9 +31,9 @@ def permute_unique(nums)
   result
 end
 
-# only returns a unique result
-def helper(nums, result, tmp=[], start=1)
-  if (tmp.size == nums.size) && !result.include?(tmp)
+# only returns result of full array
+def helper(nums, result, tmp=[], start=0)
+  if (tmp.size == nums.size) # && !result.include?(tmp)
     result.push(tmp.clone)
   else
 
