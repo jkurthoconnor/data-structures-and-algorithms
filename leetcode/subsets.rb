@@ -61,7 +61,7 @@ def helper2(nums, result, candidate = [])
   end
 
   nums.each do |n|
-    next if candidate.include?(n)
+    next if candidate.include?(n) # given uniq input, prevents duplicate inclusion
     candidate.push(n)
     helper2(nums, result, candidate)
     candidate.pop
