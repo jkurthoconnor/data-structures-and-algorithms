@@ -1,21 +1,18 @@
 def add_bitwise(x,y)
-  while y > 0
-    common = x & y      # shared bits
-    uncommon = x ^ y    # unshared bits
-
-    x = uncommon
-    y = common << 1     # shared bits shift left
+  while y > 0               # while there are values to carry forward
+    carry_bits = x & y      # id bits with place-value overflow; mark 1 (else 0)
+    x = x ^ y               # x = bits with place-appropriate values;
+    y = carry_bits << 1     # carry bits shift left to next place value
+                           # assuring x + y = sum equation
   end
-
   x
 end
 
 def subtract_bitwise(x,y)
   while y > 0
-    to_subtract = (~x) & y
-    uncommon = x ^ y
-    x = uncommon
-    y = to_subtract << 1
+    borrowers = (~x) & y    # id bits that need to borrow from next higher place
+    x  = x ^ y              #
+    y = borrowers << 1
   end
 
   x
