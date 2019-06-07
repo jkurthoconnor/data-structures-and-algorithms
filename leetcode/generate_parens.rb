@@ -23,18 +23,23 @@ MODEL:
 =end
 
 
+
+
+
+
 def generate_parenthesis(n)
   result = []
+
   source = SyntaxTools::create_parens_pairs(n)
   helper(source, result)
   result
 end
 
 def helper(source, result, tmp=[], idx=0)
-  puts "#{source}, #{result}, tmp=#{tmp}, idx=#{idx}"
+  puts "#{" -> " * tmp.size}#{source}, #{result}, tmp=#{tmp}, idx=#{idx}"
   if tmp.size == source.size && (tmp.join.valid_parens?)
     result.push(tmp.join)  # all legit results as tmp are being pushed
-    
+
   else
     i = idx
 
