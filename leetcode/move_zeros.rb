@@ -41,6 +41,29 @@ def move_zeroes(nums)
   end
 end
 
+=begin
+similar solution:
+# does the while loop increase time?
+
+def move_zeroes(numbers)
+
+  numbers.each_with_index do |n, idx|
+    if n.zero?
+      nidx = idx + 1
+
+      while numbers[nidx] == 0
+        nidx += 1
+      end
+
+      break if nidx >= numbers.size
+
+      numbers[idx] = numbers[nidx]
+      numbers[nidx] = 0
+    end
+  end
+end
+
+=end
 
 a1 = [0,1,0,3,12]
 a2 = [9,1,0,3,13,12,0]

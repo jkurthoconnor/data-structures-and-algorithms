@@ -17,41 +17,33 @@
 #  vars:
   #  seeker var, set to 0
 #  last_not_target, set to array.length - 1
-  #  tmp
 #
 # while seeker < last_not_target
 #  move last_not_target idx back until it points to a non-target value 
-#  advance seeker to first idx with target value
-#    swap values of last_non_target and seeker
-# return last_non_target
+#  advance target_finder to first idx with target value
+#    overwrite target-finder
+# return last_non_target + 1
+#
 
 
+# figure out edge cases with pointer positions
 
-# **** is swap necessary?
-def remove_element(nums, value)
-  return [] if nums.length == 1 && nums[0] == value
-  return nums if nums.length == 1
+def remove_element(nums, target)
+  target_finder= 0
+  last_non_target = nums.size - 1
 
-  extract_from = 0
-  insert_at = nums.length - 1
+  while target_finder < last_non_target
+    target_finder += 1 unless nums[target_finder] == target
+    last_non_target -= 1 unless nums[last_non_target] != target
 
-  while extract_from < insert_at
-    until nums[extract_from] == value || extract_from >= insert_at
-      extract_from += 1
+    if nums[target_finder] == target && nums[last_non_target] != target
+      nums[target_finder] = nums[last_non_target]
+      last_non_target -= 1
     end
-
-    until nums[insert_at] != value || extract_from >= insert_at
-      insert_at -= 1
-    end
-
-    nums[extract_from], nums[insert_at] = nums[insert_at], nums[extract_from]
   end
 
-  insert_at
+  target_finder + 1
 end
-
-
-
 
 a1 = [2,2,3,3]
 a2 = [0,1,2,2,3,0,4,2]
@@ -66,8 +58,8 @@ p remove_element(a2, 2) # 5
 p remove_element(a3, 6) # 5
 p remove_element(a5, 2) # 1
 # address edge cases in leetcode
-p remove_element(a4, 3) # [2]
-p remove_element(a6, 1) # []
+# p remove_element(a4, 3) # [2]
+# p remove_element(a6, 1) # []
 # WHY DOES THIS WORK?
 p remove_element(a7, 5) # 0
 

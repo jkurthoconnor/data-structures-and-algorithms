@@ -20,6 +20,22 @@
 #     in: []
 #     out: false
 #
+#
+# A: naive: nested loops time: O(N) (incrementing anchor with runner resetting to anchor + 1)
+
+# def contains_duplicates(numbers)
+#   numbers.each_with_index do |n, idx|
+#     seeker = idx + 1
+
+#     while seeker < numbers.size
+#       return true if numbers[seeker] == n
+#       seeker += 1
+#     end
+#   end
+  
+#   false
+# end
+#
 # algorithm:
 #   naive: O(N log N) assuming quicksort
 #          sort array;
