@@ -2,26 +2,26 @@ Node = Struct.new(:val, :next)
 
 # TIME: O(N) SPACE:  
 # LeetCode: faster than 100%; less memory than 51%
-def remove_elements(head, target)
+def remove_value(head, value)
   return nil if head.nil?
 
-  dummy = Node.new(nil)
-  prev = dummy
-  cur = head
-  prev.next = cur
+  dummy_head = Node.new(nil, head)
+  prev = dummy_head
+  current = head
 
-  while cur
-    if cur.val == target
-      cur = cur.next
-      prev.next = cur
+  while current
+    if current.val == value
+      prev.next = current.next
     else
-      prev = cur
-      cur = cur.next
+      prev = current
     end
+
+    current = current.next
   end
 
-  dummy.next
+  dummy_head.next
 end
+
 
 a = Node.new('a')
 a2 = Node.new('a')

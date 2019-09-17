@@ -1,6 +1,7 @@
 Node = Struct.new(:val, :next)
 
 # LeetCode: faster than 97%; less memory than 100%
+=begin
 def reverse_list(head)
   return nil if head.nil?
   return head if head.next.nil?
@@ -18,6 +19,27 @@ def reverse_list(head)
 
   cur.next = prev
   cur
+end
+=end
+
+# LeetCode: faster than 90%; less memory than 100%
+
+def reverse_list(head)
+  return nil if head.nil?
+  return head if head.next.nil?
+
+  previous = nil
+  current = head
+  nxt = current.next
+
+  while current
+    current.next = previous
+    previous = current
+    current = nxt
+    nxt && (nxt = nxt.next)
+  end
+
+  previous
 end
 
 a = Node.new('a')
