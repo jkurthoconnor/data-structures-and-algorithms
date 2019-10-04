@@ -85,3 +85,21 @@ def reverse(int)
 
   return (-2147483648...2147483648).include?(reversed) ? reversed : 0
 end
+
+
+=begin without guarding for range
+
+def rev_digits(int)
+  negative = int < 0
+  reversed = 0
+  unreversed = int.abs
+
+  while !unreversed.zero?
+    unreversed, digit = unreversed.divmod(10)
+    reversed = (reversed * 10) + digit
+  end
+
+  negative ? reversed * -1 : reversed
+end
+
+=end
