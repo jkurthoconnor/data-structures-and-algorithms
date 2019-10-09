@@ -128,6 +128,55 @@ def breadth_first_level_mapping_with_queue(root)
 end
 
 
+# basic tree operations
+def search_b_tree(root, target)
+  return -1 if root.nil?
+  return root if root.val == target
+
+  if root.val < target
+    search_b_tree(root.right, target)
+  else
+    search_b_tree(root.left, target)
+  end
+end
+
+def insert_leaf(root, val)
+  if val < root.val
+    if !root.left
+      root.left = Node.new(val)
+    else
+      insert_leaf(root.left, val)
+    end
+  else
+    if !root.right
+      root.right = Node.new(val)
+    else
+      insert_leaf(root.right, val)
+    end
+  end
+
+  root
+end
+
+def delete(root, target) # removes entire tree at target node
+  return nil if root.val == target
+
+  if target < root.val
+    if root.left.val == target
+      root.left = nil
+    else
+      delete(root.left, target)
+    end
+  else
+    if root.right.val == target
+      root.right = nil
+    else
+      delete(root.right, target)
+    end
+  end
+end
+
+#### 
 Node = Struct.new(:val, :left, :right)
 
 one = Node.new(1)
