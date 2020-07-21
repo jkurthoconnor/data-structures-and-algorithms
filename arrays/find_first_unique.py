@@ -56,7 +56,7 @@
 ######
 # Time: O(N+N) | Space: O(N)
 # iterate through list 2x:
-# first iteration prepares a dict with the key being the element and the value being the elements count
+# first iteration prepares a dict with the key being the element and the value being the element's count
 # second iteration is over the list elements, checking each in the count dict; return the first element to have a count of 1
 # if second iteration ends without encountering a count of 1, retunr []
 
