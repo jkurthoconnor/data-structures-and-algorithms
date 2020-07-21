@@ -3,7 +3,7 @@ BUBBLE SORT
 
 mental model: 
   multiple passthroughs
-  the highest unsorted value is pushed 'up' to its appropriate place in the array 
+  the highest unsorted value is pushed 'up' (via swaps) to its appropriate place in the array 
   That is, at each passthrough, the highest unsorted value Bubbles Up into place
 
 use case
