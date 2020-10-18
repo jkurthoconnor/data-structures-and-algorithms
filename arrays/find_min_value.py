@@ -9,10 +9,11 @@
 # iterate over list; 
 # reset current_min to element value if value < current_min
 
+# Time: O(N) | Space: O(1)
 import random
 
 def find_min(integers):
-    if len(integers) == 0:
+    if not integers:
         return integers
 
     current_min = float('inf')

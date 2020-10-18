@@ -58,7 +58,7 @@
 # iterate through list 2x:
 # first iteration prepares a dict with the key being the element and the value being the element's count
 # second iteration is over the list elements, checking each in the count dict; return the first element to have a count of 1
-# if second iteration ends without encountering a count of 1, retunr []
+# if second iteration ends without encountering a count of 1, return []
 
 
 def first_unique(ints):
@@ -72,8 +72,7 @@ def first_unique(ints):
     for ele in ints:
         if count[ele] == 1:
             return ele
-    else:
-        return []
+    return []
 
 class TestFirstUnique:
     def test_first_is_unique(self):
